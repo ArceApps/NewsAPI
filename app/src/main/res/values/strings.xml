@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">NewsAPI</string>
+    <string name="title_home">Home</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="content">content</string>
+    <string name="description">description</string>
+    <string name="author">author</string>
+    <string name="url">url</string>
+    <string name="urlToImage">urlToImage</string>
+    <string name="title">title</string>
+    <string name="publishedAt">publishedAt</string>
+    <string name="bookmarkAdded">Added to Bookmarks</string>
+    <string name="bookmarkRemoved">Removed from Bookmarks</string>
+    <string name="share">Share</string>
+    <string name="default_time_format">yyyy-MM-dd\'T\'HH:mm:ss\'Z\'</string>
+    <string name="date_format">MMM d, yyyy</string>
+    <string name="time_format">HH:mm a</string>
+    <string name="no_internet_connection">There is no Internet Connection\nPlease check your Internet Connection</string>
+    <string name="try_again">Try Again</string>
+    <string name="logout">Logout</string>
+    <string name="displayname">DisplayName</string>
+    <string name="email_id">Email-id</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="the_latest_news">NewsAPI is platform where you can get all the latest news.</string>
+    <string name="user_name">user_name</string>
+    <string name="good_morning">Good Morning!</string>
+    <string name="top_stories">Top Stories</string>
+    <string name="view_all">View All</string>
+    <string name="suggested_topics">Suggested Topics</string>
+    <string name="top_headines">Top Headines</string>
+    <string name="heading">Heading</string>
+    <string name="date">Date</string>
+    <string name="click_to_read_full_news">Click to read Full news</string>
+</resources>

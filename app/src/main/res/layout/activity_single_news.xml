@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SingleNewsActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_news_image"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="250dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:cardCornerRadius="20dp">
+
+            <ImageView
+                android:id="@+id/news_full_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_news_content"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/card_news_image"
+        android:elevation="15dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toTopOf="@id/fullNews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_news_image">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/news_full_headline_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="33dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/heading"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/news_full_date_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/date"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/news_full_description_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:text="@string/description"
+                        android:textColor="#4B4B4B"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/news_full_content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:maxLength="260"
+                        android:text="@string/content"
+                        android:textColor="#4B4B4B"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_news_full_bookmark_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/card_news_content"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/news_full_fab_share"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:src="@drawable/ic_bookmark_border"
+        android:theme="@style/fab_action"
+        android:visibility="visible"
+        app:elevation="20dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/card_news_image"
+        app:layout_constraintEnd_toStartOf="@+id/news_full_fab_share"
+        app:rippleColor="#FF871F"
+        android:focusable="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/news_full_fab_bookmark_filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/card_news_content"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/news_full_fab_share"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:src="@drawable/ic_bookmark_orange_fill"
+        android:theme="@style/fab_action"
+        android:visibility="gone"
+        app:elevation="20dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/card_news_image"
+        app:layout_constraintEnd_toEndOf="@+id/fab_news_full_bookmark_border"
+        app:rippleColor="#FF871F"
+        android:focusable="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/news_full_fab_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/card_news_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:paddingBottom="4dp"
+        android:src="@drawable/share"
+        android:theme="@style/fab_action"
+        android:visibility="visible"
+        app:elevation="20dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/card_news_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#FF871F"
+        android:focusable="true" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fullNews"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/bottomImage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:alpha="0.3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/parliament1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:alpha="0.6"
+            android:background="@color/blue_grey_600"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:text="@string/click_to_read_full_news"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

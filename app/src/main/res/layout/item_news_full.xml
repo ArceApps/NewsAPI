@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@android:color/black">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_news_image"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        app:cardCornerRadius="20dp"
+        tools:cardCornerRadius="20dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp">
+
+            <ImageView
+                android:id="@+id/news_full_image"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="340dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="-20dp"
+                android:src="@drawable/image_border" />
+
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_news_content"
+        android:layout_below="@id/card_news_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-40dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="15dp"
+        app:cardElevation="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/news_full_headline_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="15dp"
+                        android:text="Heading :"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/news_full_date_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="15dp"
+                        android:text="Date"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/news_full_description_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:text="Description"
+                        android:textColor="#4B4B4B"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/news_full_content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:text="Content"
+                        android:textColor="#4B4B4B"
+                        android:textSize="14dp"
+                        android:maxLength="260" />
+
+                </LinearLayout>
+            </ScrollView>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fullNews"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true">
+
+                <ImageView
+                    android:id="@+id/bottomImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="0.3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/parliament1"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="0.6"
+                    android:background="@color/blue_grey_600"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="20dp"
+                    android:textSize="14dp"
+                    android:text="Click to read Full news"
+                    android:textColor="@color/white"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_news_full_bookmark_border"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bookmark_border"
+        android:layout_toLeftOf="@id/news_full_fab_share"
+        android:layout_above="@+id/card_news_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="12dp"
+        android:theme="@style/fab_action"
+        app:rippleColor="#FF871F"
+        app:fabSize="normal"
+        android:clickable="true"
+        android:elevation="20dp"
+        app:elevation="20dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/news_full_fab_bookmark_filled"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_bookmark_orange_fill"
+        android:layout_toLeftOf="@id/news_full_fab_share"
+        android:layout_above="@+id/card_news_content"
+        android:layout_marginRight="10dp"
+        android:theme="@style/fab_action"
+        app:rippleColor="#FF871F"
+        android:clickable="true"
+        android:elevation="20dp"
+        app:elevation="20dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/news_full_fab_share"
+        android:visibility="visible"
+        android:theme="@style/fab_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/card_news_content"
+        android:src="@drawable/share"
+        android:paddingBottom="4dp"
+        app:rippleColor="#FF871F"
+        android:clickable="true"
+        android:layout_marginRight="25dp"
+        app:elevation="20dp"
+        android:elevation="20dp"/>
+
+</RelativeLayout>
