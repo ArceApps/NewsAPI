@@ -6,15 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arceapps.newsapi.NetworkRepository
-import com.arceapps.newsapi.adapters.HeadlinesRecyclerViewAdapter
-import com.arceapps.newsapi.db.BookmarkDatabase
 import com.arceapps.newsapi.model.ArticlesModel
-import com.arceapps.newsapi.model.NewsHeadlines
 import com.arceapps.newsapi.retrofit.ApiInterface
-import com.arceapps.newsapi.retrofit.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
 
 class HomeViewModel : ViewModel() {
 
@@ -31,95 +26,6 @@ class HomeViewModel : ViewModel() {
         topliveData = mutableTopLiveData
     }
 
-    fun getBusiness () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getBusiness()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getEntertainment () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(repository.getEntertainment())
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getSports () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getSports()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getScience () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getScience()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getTechnology () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getTechnology()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getMedical () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getMedical()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getInternational () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(
-                    repository.getInternational()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
     fun getTopHeadlines () {
         viewModelScope.launch(Dispatchers.Main) {
             try {
@@ -131,7 +37,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun getArticles () {
+    fun getGeneral () {
         viewModelScope.launch(Dispatchers.Main) {
             try {
                 mutableLiveData.postValue(repository.getArticles())

@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
         observeNews()
 
         viewModel.getTopHeadlines()
-        viewModel.getArticles()
+        viewModel.getGeneral()
 
         binding.mainRefreshLayout.setColorSchemeResources(
             android.R.color.holo_blue_dark,

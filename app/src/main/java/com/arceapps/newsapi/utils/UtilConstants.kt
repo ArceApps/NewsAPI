@@ -9,6 +9,7 @@ object UtilConstants{
     const val language : String = "language"
     const val topHeadlines : String = "top-headlines?"
     const val everything : String = "everything?"
+    const val numNews: Int = 50
     const val category_business : String = "category=business"
     const val category_entertainment : String = "category=entertainment"
     const val category_general : String = "category=general"

@@ -26,7 +26,7 @@ class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: TopStoriesViewModel by viewModels()
+    private val viewModel: DashboardViewModel by viewModels()
     private lateinit var title: String
 
     override fun onCreateView(
@@ -60,71 +60,12 @@ class DashboardFragment : Fragment() {
 
         Log.d("Dashboard_title: ", title)
         when (title) {
-            "Entertainment" -> {
-                viewModel.getEntertainment()
-
-            }
-            "Technology" -> {
-                viewModel.getTechnology()
-            }
-            "Business" -> {
-                viewModel.getBusiness()
-
-            }
-            "Sports" -> {
-                viewModel.getSports()
-            }
-            "Medical" -> {
-                viewModel.getMedical()
-
-            }
-            "Science" -> {
-                viewModel.getScience()
-
-            }
-            "International" -> {
-                viewModel.getInternational()
-
-            }
-            "Bookmarks" -> {
-
-                BookmarkDatabase(requireContext().applicationContext).bookmarkDao().getBookmarks().observe(viewLifecycleOwner, Observer {
-
-                    var myNewsList = mutableListOf<NewsHeadlines>()
-                    for (i in it)
-                        if (!i.urlToImage.isNullOrEmpty()) {
-
-                            myNewsList.add(
-                                NewsHeadlines(
-                                    i.author,
-                                    i.id.toString(),
-                                    i.name,
-                                    i.title,
-                                    i.description,
-                                    i.url,
-                                    i.urlToImage,
-                                    i.publishedAt,
-                                    i.content
-                                )
-                            )
-
-                        }
-
-                    myNewsList.reverse()
-
-                    if (myNewsList.isNullOrEmpty())
-                        binding.layoutTopHeadlines.noItem.visibility = View.VISIBLE
-                    else {
-                        binding.layoutTopHeadlines.noItem.visibility = View.GONE
-                    }
-
-                    binding.layoutTopHeadlines.headlinesRecyclerView.adapter =
-                        HeadlinesRecyclerViewAdapter(requireContext().applicationContext, myNewsList)
-                })
+            "General" -> {
+                viewModel.getGeneral()
 
             }
             else -> {
-                viewModel.getArticles()
+                viewModel.getTopHeadlines()
             }
         }
     }
@@ -154,7 +95,7 @@ class DashboardFragment : Fragment() {
 
 
             binding.layoutTopHeadlines.headlinesRecyclerView.adapter =
-                HeadlinesRecyclerViewAdapter(requireContext().applicationContext, myNewsList)
+                DashboardRecyclerViewAdapter(requireContext().applicationContext, myNewsList)
         })
     }
 

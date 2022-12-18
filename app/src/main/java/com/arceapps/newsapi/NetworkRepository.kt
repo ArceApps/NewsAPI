@@ -25,4 +25,6 @@ class NetworkRepository(
 
     suspend fun getArticles() = apiRequest { apiInterface.getArticles() }
 
+    suspend fun getGeneral() = apiRequest { apiInterface.getGeneral() }
+
 }
