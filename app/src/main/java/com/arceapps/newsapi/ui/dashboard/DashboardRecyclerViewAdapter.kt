@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arceapps.newsapi.R
 import com.arceapps.newsapi.activities.SingleNewsActivity
+import com.arceapps.newsapi.adapters.TopStoriesHomeRecyclerViewAdapter
 import com.arceapps.newsapi.model.NewsHeadlines
+import com.arceapps.newsapi.utils.UtilMethods
 import com.bumptech.glide.Glide
 
 /**
@@ -21,23 +23,22 @@ class DashboardRecyclerViewAdapter(var context: Context, var newsheadlines: List
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_top_headlines, parent, false)
-        return DashboardViewHolder(view)
+        val viewHolder : DashboardViewHolder = DashboardViewHolder(view)
+        return viewHolder
     }
 
-    override fun getItemCount(): Int {
-        return newsheadlines.size
-    }
+    override fun getItemCount(): Int = newsheadlines.size
 
     override fun onBindViewHolder(holder: DashboardViewHolder, position: Int) {
 
-        if (newsheadlines.get(position).name != null) {
-            holder.text.text = newsheadlines.get(position).name
-        } else if (newsheadlines.get(position).author != null) {
-            holder.text.text = newsheadlines.get(position).author
-        } else if (newsheadlines.get(position).id != null) {
-            holder.text.text = newsheadlines.get(position).id
-        } else {
-            holder.text.text = newsheadlines.get(position).title
+        if (newsheadlines.get(position).title != null) {
+            holder.text.setText(newsheadlines.get(position).title)
+        }
+        else if (newsheadlines.get(position).description != null){
+            holder.text.setText(newsheadlines.get(position).description)
+        }
+        else if (newsheadlines.get(position).content != null){
+            holder.text.setText(newsheadlines.get(position).content)
         }
 
         Glide.with(context)
@@ -45,7 +46,7 @@ class DashboardRecyclerViewAdapter(var context: Context, var newsheadlines: List
             .placeholder(R.drawable.index)
             .into(holder.image)
 
-        holder.image.setOnClickListener {
+        holder.item.setOnClickListener {
             val intent = Intent(context, SingleNewsActivity::class.java);
             intent.putExtra(context.getString(R.string.content), newsheadlines.get(position).content)
             intent.putExtra(context.getString(R.string.description), newsheadlines.get(position).description)
@@ -57,6 +58,14 @@ class DashboardRecyclerViewAdapter(var context: Context, var newsheadlines: List
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }
+
+        holder.date.setText(
+            UtilMethods.convertISOTime(
+                context,
+                newsheadlines.get(position).publishedAt
+            )
+        )
+
     }
 
 }

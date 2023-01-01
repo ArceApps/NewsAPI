@@ -102,34 +102,10 @@ class TopStoriesViewModel: ViewModel() {
         }
     }
 
-    fun getInternational () {
+    fun getGeneral () {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                mutableLiveData.postValue(
-                    repository.getInternational()
-                )
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getTopHeadlines () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableTopLiveData.postValue(repository.getTopHeadlines())
-            }
-            catch (e: Exception) {
-                Log.e("Get Feeds", e.message!!)
-            }
-        }
-    }
-
-    fun getArticles () {
-        viewModelScope.launch(Dispatchers.Main) {
-            try {
-                mutableLiveData.postValue(repository.getArticles())
+                mutableTopLiveData.postValue(repository.getGeneral())
             }
             catch (e: Exception) {
                 Log.e("Get Feeds", e.message!!)

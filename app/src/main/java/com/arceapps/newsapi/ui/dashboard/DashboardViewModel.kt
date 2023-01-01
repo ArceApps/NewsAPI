@@ -29,7 +29,7 @@ class DashboardViewModel : ViewModel() {
     fun getTopHeadlines () {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                mutableTopLiveData.postValue(repository.getTopHeadlines())
+                mutableLiveData.postValue(repository.getTopHeadlines())
             }
             catch (e: Exception) {
                 Log.e("Get Feeds", e.message!!)

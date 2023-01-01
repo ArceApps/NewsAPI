@@ -5,6 +5,7 @@ object UtilConstants{
     const val baseUrl : String = "https://newsapi.org/v2/"
     const val apiKey : String = "apiKey=f1560d500f6142a98301b5e8318f85b7"
     const val country : String = "country"
+    const val countryValue: String = "ar"
     const val category : String = "category"
     const val language : String = "language"
     const val topHeadlines : String = "top-headlines?"

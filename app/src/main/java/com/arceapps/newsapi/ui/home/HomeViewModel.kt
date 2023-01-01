@@ -40,7 +40,7 @@ class HomeViewModel : ViewModel() {
     fun getGeneral () {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                mutableLiveData.postValue(repository.getArticles())
+                mutableLiveData.postValue(repository.getGeneral())
             }
             catch (e: Exception) {
                 Log.e("Get Feeds", e.message!!)

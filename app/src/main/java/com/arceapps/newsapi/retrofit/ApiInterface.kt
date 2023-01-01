@@ -5,6 +5,7 @@ import com.arceapps.newsapi.utils.UtilConstants
 import com.arceapps.newsapi.utils.UtilConstants.apiKey
 import com.arceapps.newsapi.utils.UtilConstants.category
 import com.arceapps.newsapi.utils.UtilConstants.country
+import com.arceapps.newsapi.utils.UtilConstants.countryValue
 import com.arceapps.newsapi.utils.UtilConstants.everything
 import com.arceapps.newsapi.utils.UtilConstants.language
 import com.arceapps.newsapi.utils.UtilConstants.numNews
@@ -29,37 +30,34 @@ interface ApiInterface {
     }
 
 
-    @GET("$topHeadlines$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$country=$countryValue&$pageSize=$numNews&$apiKey")
     fun getArticlesModel() : Call<ArticlesModel>
 
-    @GET("$topHeadlines$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getTopHeadlines() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=technology&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=technology&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getArticles() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=technology&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=technology&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getTechnology() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=entertainment&$country=ar&$pageSize=$numNews&$apiKey")
-    fun getEntertainmaent() : Call<ArticlesModel>
-
-    @GET("$topHeadlines$category=entertainment&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=entertainment&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getEntertainment() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=business&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=business&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getBusiness() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=general&$country=ar&$pageSize=$numNews&$apiKey")
-    fun getGeneral() : Response<ArticlesModel>
+    @GET("$topHeadlines$category=general&$country=$countryValue&$pageSize=$numNews&$apiKey")
+    suspend fun getGeneral() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=health&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=health&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getHealth() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=science&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=science&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getScience() : Response<ArticlesModel>
 
-    @GET("$topHeadlines$category=sports&$country=ar&$pageSize=$numNews&$apiKey")
+    @GET("$topHeadlines$category=sports&$country=$countryValue&$pageSize=$numNews&$apiKey")
     suspend fun getSports() : Response<ArticlesModel>
 
     @GET("$everything$language=es&q=international&$pageSize=$numNews&$apiKey")

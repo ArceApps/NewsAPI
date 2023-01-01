@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home,
                 R.id.navigation_bookmarks,
                 R.id.navigation_dashboard,
-                R.id.navigation_notifications
+                R.id.navigation_search
             )
         )
 
@@ -63,8 +63,8 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.navigation_dashboard)
                 false
             }
-            if (item.itemId == R.id.navigation_notifications) {
-                navController.navigate(R.id.navigation_notifications)
+            if (item.itemId == R.id.navigation_search) {
+                navController.navigate(R.id.navigation_search)
                 false
             }
             if (item.itemId == R.id.navigation_home) {

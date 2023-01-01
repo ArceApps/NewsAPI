@@ -22,12 +22,14 @@ import com.arceapps.newsapi.adapters.PreferencesViewPagerAdapter
 import com.arceapps.newsapi.adapters.SuggestedTopicsRecyclerViewAdapter
 import com.arceapps.newsapi.adapters.TopStoriesHomeRecyclerViewAdapter
 import com.arceapps.newsapi.databinding.FragmentHomeBinding
+import com.arceapps.newsapi.model.ArticlesModel
 import com.arceapps.newsapi.model.NewsHeadlines
 import com.arceapps.newsapi.model.SuggestedTopics
 import com.arceapps.newsapi.retrofit.ApiInterface
 import com.arceapps.newsapi.retrofit.RetrofitClient
 import com.arceapps.newsapi.ui.dashboard.DashboardFragment
 import com.arceapps.newsapi.viewmodel.TopStoriesViewModel
+import retrofit2.Call
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -56,8 +58,8 @@ class HomeFragment : Fragment() {
         getTopics()
         observeNews()
 
-        viewModel.getTopHeadlines()
         viewModel.getGeneral()
+        viewModel.getTopHeadlines()
 
         binding.mainRefreshLayout.setColorSchemeResources(
             android.R.color.holo_blue_dark,
@@ -76,13 +78,12 @@ class HomeFragment : Fragment() {
         binding.layoutMain.homeViewPager.setPadding(0, 0, (getScreenWidth()*0.2).toInt(), 0)
 
         binding.layoutMain.viewAllTopStories.setOnClickListener {
-            val bundle = bundleOf("name" to "Top Headlines")
+            val bundle = bundleOf("name" to "Dashboard")
             view.findNavController().navigate(R.id.navigation_dashboard, bundle)
         }
 
         binding.layoutMain.viewBookmarks.setOnClickListener {
             val bundle = bundleOf("name" to "Bookmarks")
-
             view.findNavController().navigate(R.id.navigation_bookmarks, bundle)
         }
     }
@@ -103,7 +104,6 @@ class HomeFragment : Fragment() {
             SuggestedTopics(R.drawable.topic_science, "Science"),
             SuggestedTopics(R.drawable.topic_technology, "Technology"),
             SuggestedTopics(R.drawable.topic_medical, "Medical"),
-            SuggestedTopics(R.drawable.topic_international, "International")
         )
 
         binding.layoutMain.suggestedTopicsRecyclerView.layoutManager = GridLayoutManager(requireContext().applicationContext, 3)

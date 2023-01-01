@@ -92,10 +92,6 @@ class TopStoriesActivity : AppCompatActivity() {
                 viewModel.getScience()
 
             }
-            "International" -> {
-                viewModel.getInternational()
-
-            }
             "Bookmarks" -> {
 
                 BookmarkDatabase(this).bookmarkDao().getBookmarks().observe(this, Observer {
@@ -133,7 +129,7 @@ class TopStoriesActivity : AppCompatActivity() {
 
             }
             else -> {
-                viewModel.getArticles()
+                viewModel.getGeneral()
             }
         }
     }

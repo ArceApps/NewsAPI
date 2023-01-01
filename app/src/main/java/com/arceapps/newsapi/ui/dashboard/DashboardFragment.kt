@@ -60,12 +60,12 @@ class DashboardFragment : Fragment() {
 
         Log.d("Dashboard_title: ", title)
         when (title) {
-            "General" -> {
-                viewModel.getGeneral()
+            "Dashboard" -> {
+                viewModel.getTopHeadlines()
 
             }
             else -> {
-                viewModel.getTopHeadlines()
+                viewModel.getGeneral()
             }
         }
     }
