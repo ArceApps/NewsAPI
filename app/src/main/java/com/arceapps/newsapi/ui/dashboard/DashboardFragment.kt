@@ -6,20 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import com.arceapps.newsapi.adapters.HeadlinesRecyclerViewAdapter
 import com.arceapps.newsapi.databinding.FragmentDashboardBinding
-import com.arceapps.newsapi.db.BookmarkDatabase
 import com.arceapps.newsapi.model.ArticlesModel
 import com.arceapps.newsapi.model.NewsHeadlines
 import com.arceapps.newsapi.retrofit.ApiInterface
 import com.arceapps.newsapi.retrofit.RetrofitClient
-import com.arceapps.newsapi.viewmodel.TopStoriesViewModel
 import retrofit2.Call
 
 class DashboardFragment : Fragment() {
@@ -35,9 +29,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

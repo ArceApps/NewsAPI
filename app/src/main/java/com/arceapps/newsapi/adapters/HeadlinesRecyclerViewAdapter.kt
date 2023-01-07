@@ -28,14 +28,14 @@ class HeadlinesRecyclerViewAdapter(var context : Context, var newsheadlines : Li
 
     override fun onBindViewHolder(holder: HeadlinesViewHolder, position: Int) {
 
-        if (newsheadlines.get(position).title != null) {
-            holder.text.setText(newsheadlines.get(position).title)
+        if (newsheadlines[position].title != null) {
+            holder.text.text = newsheadlines[position].title
         }
-        else if (newsheadlines.get(position).description != null){
-            holder.text.setText(newsheadlines.get(position).description)
+        else if (newsheadlines[position].description != null){
+            holder.text.text = newsheadlines[position].description
         }
-        else if (newsheadlines.get(position).content != null){
-            holder.text.setText(newsheadlines.get(position).content)
+        else if (newsheadlines[position].content != null){
+            holder.text.text = newsheadlines[position].content
         }
 
         Glide.with(context)
@@ -45,18 +45,18 @@ class HeadlinesRecyclerViewAdapter(var context : Context, var newsheadlines : Li
 
         holder.item.setOnClickListener {
             val intent = Intent(context, SingleNewsActivity::class.java);
-            intent.putExtra(context.getString(R.string.content), newsheadlines.get(position).content)
-            intent.putExtra(context.getString(R.string.description), newsheadlines.get(position).description)
-            intent.putExtra(context.getString(R.string.author), newsheadlines.get(position).author)
-            intent.putExtra(context.getString(R.string.url), newsheadlines.get(position).url)
-            intent.putExtra(context.getString(R.string.urlToImage), newsheadlines.get(position).urlToImage)
-            intent.putExtra(context.getString(R.string.title), newsheadlines.get(position).title)
-            intent.putExtra(context.getString(R.string.publishedAt), newsheadlines.get(position).publishedAt)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra(context.getString(R.string.content), newsheadlines[position].content)
+            intent.putExtra(context.getString(R.string.description), newsheadlines[position].description)
+            intent.putExtra(context.getString(R.string.author), newsheadlines[position].author)
+            intent.putExtra(context.getString(R.string.url), newsheadlines[position].url)
+            intent.putExtra(context.getString(R.string.urlToImage), newsheadlines[position].urlToImage)
+            intent.putExtra(context.getString(R.string.title), newsheadlines[position].title)
+            intent.putExtra(context.getString(R.string.publishedAt), newsheadlines[position].publishedAt)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
 
-        holder.date.setText(convertISOTime(context, newsheadlines.get(position).publishedAt))
+        holder.date.text = convertISOTime(context, newsheadlines[position].publishedAt)
 
     }
 

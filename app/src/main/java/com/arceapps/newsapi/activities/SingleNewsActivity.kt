@@ -6,64 +6,47 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.arceapps.newsapi.R
+import com.arceapps.newsapi.databinding.ActivitySingleNewsBinding
 import com.arceapps.newsapi.db.BookmarkDatabase
 import com.arceapps.newsapi.db.BookmarkModel
 import com.arceapps.newsapi.utils.UtilMethods.convertISOTime
 import com.bumptech.glide.Glide
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SingleNewsActivity : AppCompatActivity() {
 
-    private lateinit var fabBookmarkBorder: FloatingActionButton
-    private lateinit var fabBookmarkFilled: FloatingActionButton
+    private lateinit var binding: ActivitySingleNewsBinding
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_single_news)
+        binding = ActivitySingleNewsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val image = findViewById<ImageView>(R.id.news_full_image)
-        val bottomImage = findViewById<ImageView>(R.id.bottomImage)
-        val title = findViewById<TextView>(R.id.news_full_headline_text)
-        val description = findViewById<TextView>(R.id.news_full_description_text)
-        val content = findViewById<TextView>(R.id.news_full_content_text)
-        val date = findViewById<TextView>(R.id.news_full_date_text)
-        val fullNews = findViewById<ConstraintLayout>(R.id.fullNews)
-        fabBookmarkBorder =
-            findViewById<FloatingActionButton>(R.id.fab_news_full_bookmark_border)
-        fabBookmarkFilled =
-            findViewById<FloatingActionButton>(R.id.news_full_fab_bookmark_filled)
-        val fabShare = findViewById<FloatingActionButton>(R.id.news_full_fab_share)
-
-        title.text = intent.getStringExtra(getString(R.string.title))
+        binding.newsFullHeadlineText.text = intent.getStringExtra(getString(R.string.title))
         if (intent.hasExtra(getString(R.string.description))) {
             try {
-                description.text =
+                binding.newsFullDescriptionText.text =
                     intent.getStringExtra(getString(R.string.description)).toString()
             }
             catch (e: Exception) {
-                description.text = ""
+                binding.newsFullDescriptionText.text = ""
             }
         }
         if (intent.hasExtra(getString(R.string.content))) {
             if (!intent.getStringExtra(getString(R.string.content)).isNullOrEmpty()) {
                 if (intent.getStringExtra(getString(R.string.content)).toString().contains('['))
-                    content.text = intent.getStringExtra(getString(R.string.content)).toString()
+                    binding.newsFullContentText.text = intent.getStringExtra(getString(R.string.content)).toString()
                         .substringBeforeLast('[')
                 else
-                    content.text = intent.getStringExtra(getString(R.string.content)).toString()
+                    binding.newsFullContentText.text = intent.getStringExtra(getString(R.string.content)).toString()
             }
             else {
-                content.text = ""
-                content.text = ""
+                binding.newsFullContentText.text = ""
             }
         }
-        date.text = convertISOTime(
+        binding.newsFullDateText.text = convertISOTime(
             applicationContext,
             intent.getStringExtra(getString(R.string.publishedAt))
         )
@@ -71,19 +54,19 @@ class SingleNewsActivity : AppCompatActivity() {
         Glide.with(this)
             .load(intent.getStringExtra(getString(R.string.urlToImage)))
             .placeholder(R.drawable.index)
-            .into(image)
+            .into(binding.newsFullImage)
 
         Glide.with(this)
             .load(intent.getStringExtra(getString(R.string.urlToImage)))
             .placeholder(R.drawable.index)
-            .into(bottomImage)
+            .into(binding.bottomImage)
 
         checkBookmark()
 
-        fabBookmarkBorder.setOnClickListener {
+        binding.fabNewsFullBookmarkBorder.setOnClickListener {
             Toast.makeText(this, getString(R.string.bookmarkAdded), Toast.LENGTH_SHORT).show()
-            fabBookmarkBorder.visibility = View.GONE
-            fabBookmarkFilled.visibility = View.VISIBLE
+            binding.fabNewsFullBookmarkBorder.visibility = View.GONE
+            binding.newsFullFabBookmarkFilled.visibility = View.VISIBLE
 
             var bookmark = BookmarkModel(
                 intent.getStringExtra(getString(R.string.author)),
@@ -101,14 +84,14 @@ class SingleNewsActivity : AppCompatActivity() {
 
         }
 
-        fabBookmarkFilled.setOnClickListener {
+        binding.newsFullFabBookmarkFilled.setOnClickListener {
             Toast.makeText(this, getString(R.string.bookmarkRemoved), Toast.LENGTH_SHORT).show()
-            fabBookmarkBorder.visibility = View.VISIBLE
-            fabBookmarkFilled.visibility = View.GONE
+            binding.fabNewsFullBookmarkBorder.visibility = View.VISIBLE
+            binding.newsFullFabBookmarkFilled.visibility = View.GONE
             BookmarkDatabase(this).bookmarkDao().removeBookmark(intent.getStringExtra(getString(R.string.title))!!)
         }
 
-        fabShare.setOnClickListener {
+        binding.newsFullFabShare.setOnClickListener {
 //            Toast.makeText(this, getString(R.string.share), Toast.LENGTH_SHORT).show()
             val imageUri = Uri.parse(intent.getStringExtra(getString(R.string.urlToImage)))
             val sendIntent: Intent = Intent().apply {
@@ -127,7 +110,7 @@ class SingleNewsActivity : AppCompatActivity() {
 
         }
 
-        fullNews.setOnClickListener {
+        binding.fullNews.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(intent.getStringExtra(getString(R.string.url))))
             startActivity(browserIntent)
         }
@@ -143,8 +126,8 @@ class SingleNewsActivity : AppCompatActivity() {
             )!!
         )
         if (!item.isNullOrEmpty()) {
-            fabBookmarkBorder.visibility = View.GONE
-            fabBookmarkFilled.visibility = View.VISIBLE
+            binding.fabNewsFullBookmarkBorder.visibility = View.GONE
+            binding.newsFullFabBookmarkFilled.visibility = View.VISIBLE
         }
     }
 

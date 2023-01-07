@@ -2,22 +2,17 @@ package com.arceapps.newsapi.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.arceapps.newsapi.R
 import com.arceapps.newsapi.activities.TopStoriesActivity
 import com.arceapps.newsapi.model.SuggestedTopics
-import com.arceapps.newsapi.ui.dashboard.DashboardFragment
 
-class SuggestedTopicsRecyclerViewAdapter(val context: Context, val suggestedTopics: List<SuggestedTopics>)  : RecyclerView.Adapter<SuggestedTopicsRecyclerViewAdapter.SuggestedTopicsViewHolder>(){
+class SuggestedTopicsRecyclerViewAdapter(val context: Context, private val suggestedTopics: List<SuggestedTopics>)  : RecyclerView.Adapter<SuggestedTopicsRecyclerViewAdapter.SuggestedTopicsViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestedTopicsViewHolder {
 
@@ -38,13 +33,13 @@ class SuggestedTopicsRecyclerViewAdapter(val context: Context, val suggestedTopi
 
     override fun onBindViewHolder(holder: SuggestedTopicsViewHolder, position: Int) {
 
-        holder.text.setText(suggestedTopics.get(position).title)
-        holder.image.setImageResource(suggestedTopics.get(position).image)
+        holder.text.text = suggestedTopics[position].title
+        holder.image.setImageResource(suggestedTopics[position].image)
 
         holder.image.setOnClickListener {
             val intent = Intent (context, TopStoriesActivity::class.java)
-            intent.putExtra("name",suggestedTopics.get(position).title)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("name", suggestedTopics[position].title)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
 
         }
@@ -52,9 +47,8 @@ class SuggestedTopicsRecyclerViewAdapter(val context: Context, val suggestedTopi
     }
 
     class SuggestedTopicsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val image = itemView.findViewById<ImageView>(R.id.image)
-        val text = itemView.findViewById<TextView>(R.id.text)
+        val image = itemView.findViewById<ImageView>(R.id.image)!!
+        val text = itemView.findViewById<TextView>(R.id.text)!!
 
     }
 }

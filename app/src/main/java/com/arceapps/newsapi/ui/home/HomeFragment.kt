@@ -1,35 +1,25 @@
 package com.arceapps.newsapi.ui.home
 
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.arceapps.newsapi.R
-import com.arceapps.newsapi.activities.MainActivity
-import com.arceapps.newsapi.activities.TopStoriesActivity
 import com.arceapps.newsapi.adapters.PreferencesViewPagerAdapter
 import com.arceapps.newsapi.adapters.SuggestedTopicsRecyclerViewAdapter
 import com.arceapps.newsapi.adapters.TopStoriesHomeRecyclerViewAdapter
 import com.arceapps.newsapi.databinding.FragmentHomeBinding
-import com.arceapps.newsapi.model.ArticlesModel
 import com.arceapps.newsapi.model.NewsHeadlines
 import com.arceapps.newsapi.model.SuggestedTopics
 import com.arceapps.newsapi.retrofit.ApiInterface
 import com.arceapps.newsapi.retrofit.RetrofitClient
-import com.arceapps.newsapi.ui.dashboard.DashboardFragment
-import com.arceapps.newsapi.viewmodel.TopStoriesViewModel
-import retrofit2.Call
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -89,11 +79,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun getScreenWidth(): Int {
-        return Resources.getSystem().getDisplayMetrics().widthPixels
+        return Resources.getSystem().displayMetrics.widthPixels
     }
 
     private fun getScreenHeight(): Int {
-        return Resources.getSystem().getDisplayMetrics().heightPixels
+        return Resources.getSystem().displayMetrics.heightPixels
     }
 
     private fun getTopics() {
@@ -129,7 +119,7 @@ class HomeFragment : Fragment() {
     private fun observeNews() {
 
         viewModel.topliveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            var myNewsList = mutableListOf<NewsHeadlines>()
+            val myNewsList = mutableListOf<NewsHeadlines>()
 
             for (i in it.articles) {
 
@@ -162,7 +152,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.liveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            var prefList = mutableListOf<NewsHeadlines>()
+            val prefList = mutableListOf<NewsHeadlines>()
 
             for (i in it.articles) {
 

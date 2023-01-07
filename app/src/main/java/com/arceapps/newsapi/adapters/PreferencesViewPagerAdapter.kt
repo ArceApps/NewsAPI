@@ -31,10 +31,10 @@ class PreferencesViewPagerAdapter(var context: Context, var articleList: List<Ne
         val text = view.findViewById<TextView>(R.id.text_preferences)
 
         Glide.with(context)
-            .load(articleList.get(position).urlToImage)
+            .load(articleList[position].urlToImage)
             .into(image)
 
-        text.text = articleList.get(position).title
+        text.text = articleList[position].title
 
         view.setOnClickListener {
             val intent = Intent(context, SingleNewsActivity::class.java);

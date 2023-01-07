@@ -33,4 +33,7 @@
     <string name="heading">Heading</string>
     <string name="date">Date</string>
     <string name="click_to_read_full_news">Click to read Full news</string>
+    <string name="no_internet">Oops!</string>
+    <string name="news_title_example">Parliament LIVE: RS Secretariat to Revisit Issue of Marshals\' Uniform; Cong Protests Against Removal of Gandhis\' SPG Cover in LS - News18</string>
+    <string name="news_date_example">dec 10, 2019 | 04:32 am</string>
 </resources>

@@ -57,19 +57,15 @@ class MainActivity : AppCompatActivity() {
         navView.setOnItemSelectedListener { item ->
             if (item.itemId == R.id.navigation_bookmarks) {
                 navController.navigate(R.id.navigation_bookmarks)
-                false
             }
             if (item.itemId == R.id.navigation_dashboard) {
                 navController.navigate(R.id.navigation_dashboard)
-                false
             }
             if (item.itemId == R.id.navigation_search) {
                 navController.navigate(R.id.navigation_search)
-                false
             }
             if (item.itemId == R.id.navigation_home) {
                 navController.navigate(R.id.navigation_home)
-                false
             }
             true
         }
