@@ -1,8 +1,5 @@
 # NewsAPI
-
-
-# 🔖　Reference site
-* [Android 12 New Splash Screen API](https://developer.android.com/about/versions/12/features/splash-screen)
+Coroutines, mvvm, kotlin-android, viewmodel, fragment-lifecycle, viewbinding.
 
 <br/>
 <br/>
