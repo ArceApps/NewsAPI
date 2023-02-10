@@ -1,4 +1,4 @@
-# NewsAPI
+# 🔖　NewsAPI
 Coroutines, mvvm, kotlin-android, viewmodel, fragment-lifecycle, viewbinding.
 <br/>
 
